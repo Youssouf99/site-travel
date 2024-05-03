@@ -1,2 +1,7 @@
-package agency.travel.com.example.sitetravel.enums;public enum Stays {
+package agency.travel.com.example.sitetravel.enums;
+
+public enum Stays {
+    HOTEL,
+    ACTIVITY
+
 }
