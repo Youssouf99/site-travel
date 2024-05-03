@@ -1,7 +1,9 @@
 package agency.travel.com.example.sitetravel.repositories;
 
-import agency.travel.com.example.sitetravel.entities.Flight;
+import agency.travel.com.example.sitetravel.entities.HotelActivity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface FlightRepository extends JpaRepository<Flight, Long> {
+@Repository
+public interface HotelActivityRepository extends JpaRepository<HotelActivity, Long> {
 }

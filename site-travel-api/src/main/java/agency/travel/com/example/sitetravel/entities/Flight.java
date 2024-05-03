@@ -6,6 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class Flight extends Travel {
     private String departureCity;
     private String arrivalCity;

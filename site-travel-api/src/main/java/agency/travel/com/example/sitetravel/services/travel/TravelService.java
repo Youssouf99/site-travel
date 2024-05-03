@@ -1,2 +1,4 @@
-package agency.travel.com.example.sitetravel.services.travel;public interface TravelService {
+package agency.travel.com.example.sitetravel.services.travel;
+
+public interface TravelService {
 }
