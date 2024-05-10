@@ -41,7 +41,16 @@ public class TravelServiceImpl implements TravelService {
         travelRepository.deleteById(id);
     }
 
+    @Override
+    public Travel findById(Long travelId) {
+        return travelRepository.findById(travelId)
+                .orElseThrow(() -> new NotFoundException("Travel not found with id: " + travelId));
+    }
 
+    @Override
+    public List<Travel> findAllById(List<Long> travelIds) {
+        return travelRepository.findAllById(travelIds);
+    }
 
 
 }
