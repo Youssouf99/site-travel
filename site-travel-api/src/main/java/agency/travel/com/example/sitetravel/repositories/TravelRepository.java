@@ -1,9 +1,9 @@
 package agency.travel.com.example.sitetravel.repositories;
 
-import agency.travel.com.example.sitetravel.entities.Activity;
-import agency.travel.com.example.sitetravel.entities.Flight;
-import agency.travel.com.example.sitetravel.entities.Hotel;
+
 import agency.travel.com.example.sitetravel.entities.Travel;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -14,11 +14,24 @@ import java.util.List;
 
 @Repository
 public interface TravelRepository extends JpaRepository<Travel, Long> {
-    List<Flight> findFlightsByDepartureCityAndArrivalCityAndStartDateAfterAndEndDateBefore(String departureCity, String arrivalCity, LocalDate startDate, LocalDate endDate);
 
-    List<Hotel> findHotelsByCityAndStartDateAfterAndEndDateBefore(String city, LocalDate startDate, LocalDate endDate);
+    List<Travel> findByDestinationCityContainingIgnoreCase(String destinationCity);
 
-    List<Activity> findActivitiesByCityAndStartDateAfterAndEndDateBefore(String city, LocalDate startDate, LocalDate endDate);
+    @Query("SELECT DISTINCT t.destinationCity FROM Travel t")
+    List<String> findAllDistinctDestinationCity();
 
+
+
+    @Query("SELECT t FROM Travel t WHERE "
+            + "(:destination IS NULL OR t.destinationCity = :destination) "
+            + "AND (:startDate IS NULL OR t.startDate >= :startDate) "
+            + "AND (:endDate IS NULL OR t.endDate <= :endDate) "
+            + "AND (:type IS NULL OR TYPE(t) = :type) ")
+    Page<Travel> searchTravels(
+            @Param("destination") String destination,
+            @Param("startDate") LocalDate startDate,
+            @Param("endDate") LocalDate endDate,
+            @Param("type") Class<? extends Travel> type,
+            Pageable pageable);
 
 }
