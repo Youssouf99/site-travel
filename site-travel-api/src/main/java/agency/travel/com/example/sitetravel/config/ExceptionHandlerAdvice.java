@@ -1,5 +1,6 @@
 package agency.travel.com.example.sitetravel.config;
 
+import agency.travel.com.example.sitetravel.exceptions.AvailableOfRoomsException;
 import agency.travel.com.example.sitetravel.exceptions.NotFoundException;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,6 +20,12 @@ public class ExceptionHandlerAdvice {
     @ExceptionHandler(NotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ResponseEntity<Object> handleNotFoundException(NotFoundException ex, WebRequest request) {
+        return handleException(ex, request, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(AvailableOfRoomsException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ResponseEntity<Object> handleNotFoundException(AvailableOfRoomsException ex, WebRequest request) {
         return handleException(ex, request, HttpStatus.NOT_FOUND);
     }
 
