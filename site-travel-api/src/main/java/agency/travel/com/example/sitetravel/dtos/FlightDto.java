@@ -11,5 +11,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper=false)
 public class FlightDto extends TravelDto{
     private String departureCity;
-    private String arrivalCity;
+    private String airline;
+    private String flightNumber;
+
 }
