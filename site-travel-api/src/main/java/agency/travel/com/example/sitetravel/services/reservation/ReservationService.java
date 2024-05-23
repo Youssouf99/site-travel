@@ -14,5 +14,4 @@ public interface ReservationService {
 
     void deleteReservation(Long reservationId);
 
-    ReservationDto addTravelsToReservation(Long userId, Long reservationId, List<Long> travelIds);
 }

@@ -16,9 +16,6 @@ public interface HotelService {
 
     void deleteHotel(Long id);
 
-    List<HotelDto> searchHotels(String city, LocalDate checkInDate, LocalDate checkOutDate);
-
-    List<HotelDto> searchHotelsByCity(String city);
 
     List<HotelDto> searchHotelsByDateRange(LocalDate startDate, LocalDate endDate);
 
