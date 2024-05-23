@@ -1,10 +1,10 @@
-import { Button } from "@material-tailwind/react";
 import "./App.css";
+import AppRouter from "./layouts/AppRouter";
 
 function App() {
   return (
     <div className="">
-      <Button>Click me</Button>
+      <AppRouter />
     </div>
   );
 }
