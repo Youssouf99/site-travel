@@ -3,7 +3,7 @@ package agency.travel.com.example.sitetravel.services.travel;
 import agency.travel.com.example.sitetravel.dtos.FlightDto;
 import agency.travel.com.example.sitetravel.entities.Flight;
 import agency.travel.com.example.sitetravel.exceptions.NotFoundException;
-import agency.travel.com.example.sitetravel.mappers.TravelMapper;
+import agency.travel.com.example.sitetravel.mappers.FlightMapper;
 import agency.travel.com.example.sitetravel.repositories.FlightRepository;
 import org.springframework.stereotype.Service;
 
@@ -13,37 +13,37 @@ import java.util.List;
 public class FlightServiceImpl implements FlightService{
 
     private final FlightRepository flightRepository;
-    private final TravelMapper travelMapper;
+    private final FlightMapper flightMapper;
 
-    public FlightServiceImpl(FlightRepository flightRepository, TravelMapper travelMapper) {
+    public FlightServiceImpl(FlightRepository flightRepository, FlightMapper flightMapper) {
         this.flightRepository = flightRepository;
-        this.travelMapper = travelMapper;
+        this.flightMapper = flightMapper;
     }
 
     @Override
     public List<FlightDto> getAllFlights() {
         List<Flight> flights = flightRepository.findAll();
-        return travelMapper.toFlightDtos(flights);
+        return flightMapper.toFlightDtos(flights);
     }
 
     @Override
     public FlightDto getFlightById(Long id) {
-        return travelMapper.toFlightDto(flightRepository.findById(id).orElseThrow(() -> new NotFoundException("Flight not found")));
+        return flightMapper.toFlightDto(flightRepository.findById(id).orElseThrow(() -> new NotFoundException("Flight not found")));
     }
 
     @Override
     public FlightDto createFlight(FlightDto flightDto) {
-        Flight flight = travelMapper.toFlight(flightDto);
+        Flight flight = flightMapper.toFlight(flightDto);
         flight = flightRepository.save(flight);
-        return travelMapper.toFlightDto(flight);
+        return flightMapper.toFlightDto(flight);
     }
     @Override
     public FlightDto updateFlight(Long id, FlightDto flightDto) {
         Flight existingFlight = flightRepository.findById(id).orElseThrow(() -> new NotFoundException("Flight not found"));
-        Flight updatedFlight = travelMapper.toFlight(flightDto);
+        Flight updatedFlight = flightMapper.toFlight(flightDto);
         updatedFlight.setId(existingFlight.getId());
         flightRepository.save(updatedFlight);
-        return travelMapper.toFlightDto(updatedFlight);
+        return flightMapper.toFlightDto(updatedFlight);
     }
 
     @Override

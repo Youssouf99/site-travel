@@ -2,11 +2,15 @@ package agency.travel.com.example.sitetravel.entities;
 
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
+@Getter
+@Setter
 @DiscriminatorValue("HOTEL")
-public class Hotel extends HotelActivity{
+public class Hotel extends Travel{
+    private String hotelName;
+    private int availableOfRooms;
+
+
 }

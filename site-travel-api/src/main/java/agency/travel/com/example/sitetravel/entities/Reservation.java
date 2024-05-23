@@ -20,15 +20,10 @@ public class Reservation {
     private double priceTotal;
     private Date date;
     @ManyToOne
-    @JoinColumn(name = "user_id")
     private User user;
-    @ManyToMany
-    @JoinTable(
-            name = "reservation_travel",
-            joinColumns = @JoinColumn(name = "reservation_id"),
-            inverseJoinColumns = @JoinColumn(name = "travel_id")
-    )
-    private List<Travel> travels = new ArrayList<>();
+    @ManyToOne private Travel travel;
+    @OneToMany(mappedBy = "reservation", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Payment> payments = new ArrayList<>();
 
 
 }

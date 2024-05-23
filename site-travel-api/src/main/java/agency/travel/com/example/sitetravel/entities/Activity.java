@@ -2,9 +2,15 @@ package agency.travel.com.example.sitetravel.entities;
 
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
+@Getter
+@Setter
 @DiscriminatorValue("ACTIVITY")
-public class Activity extends HotelActivity{
+public class Activity extends Travel{
+    private String activityType;
+    private int durationHours;
+
 }

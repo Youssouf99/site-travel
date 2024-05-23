@@ -52,11 +52,6 @@ public class HotelController {
     }
 
 
-    @GetMapping("/search/byCity")
-    public ResponseEntity<List<HotelDto>> searchHotelsByCity(@RequestParam String city) {
-        List<HotelDto> hotels = hotelService.searchHotelsByCity(city);
-        return ResponseEntity.ok(hotels);
-    }
 
     @GetMapping("/search/byDateRange")
     public ResponseEntity<List<HotelDto>> searchHotelsByDateRange(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDate,

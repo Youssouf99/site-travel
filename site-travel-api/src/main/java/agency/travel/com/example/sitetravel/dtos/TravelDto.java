@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,5 +18,11 @@ public class TravelDto {
     @Column(columnDefinition = "DATE")
     private LocalDate endDate;
     private double price;
+    private String imageUrl;
+    private int numberOfStars;
+    private String destinationCity;
+    private String address;
+
+
 
 }

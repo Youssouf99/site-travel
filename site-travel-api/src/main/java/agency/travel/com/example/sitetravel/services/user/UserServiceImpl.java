@@ -5,12 +5,14 @@ import agency.travel.com.example.sitetravel.entities.User;
 import agency.travel.com.example.sitetravel.exceptions.NotFoundException;
 import agency.travel.com.example.sitetravel.mappers.UserMapper;
 import agency.travel.com.example.sitetravel.repositories.UserRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@Transactional
 public class UserServiceImpl implements UserService {
 
     @Autowired
@@ -21,7 +23,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto createUser(UserDto userDto) {
-        User user = userMapper.userDtoToUser(userDto);
+        User user = userRepository.findByEmail(userDto.getEmail()).orElse(null);
+        if (user != null) {
+            return userMapper.userToUserDto(user);
+        }
+        user = userMapper.userDtoToUser(userDto);
         user = userRepository.save(user);
         return userMapper.userToUserDto(user);
     }
@@ -52,11 +58,7 @@ public class UserServiceImpl implements UserService {
         userRepository.deleteById(id);
     }
 
-    @Override
-    public User findById(Long userId) {
-        return userRepository.findById( userId)
-                .orElseThrow(() -> new NotFoundException("User not found with id :"+ userId ));
-    }
+
 
 
 }
