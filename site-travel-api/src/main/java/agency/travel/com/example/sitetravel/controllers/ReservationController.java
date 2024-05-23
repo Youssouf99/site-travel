@@ -11,7 +11,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/reservations")
+@RequestMapping("/api/reservations")
 public class ReservationController {
 
     private final ReservationService reservationService;
@@ -53,17 +53,6 @@ public class ReservationController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-
-    @PutMapping("/addTravels")
-    public ResponseEntity<ReservationDto> addTravelsToReservation(@RequestParam("userId") Long userId,
-                                                                  @RequestParam("reservationId") Long reservationId,
-                                                                  @RequestBody List<Long> travelIds) {
-        ReservationDto updatedReservation = reservationService.addTravelsToReservation(userId, reservationId, travelIds);
-        if (updatedReservation != null) {
-            return new ResponseEntity<>(updatedReservation, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
 
 
 }
