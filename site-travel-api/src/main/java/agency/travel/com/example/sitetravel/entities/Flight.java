@@ -11,7 +11,8 @@ import lombok.*;
 @EqualsAndHashCode(callSuper=false)
 public class Flight extends Travel {
     private String departureCity;
-    private String arrivalCity;
+    private String airline;
+    private String flightNumber;
 
 
 }

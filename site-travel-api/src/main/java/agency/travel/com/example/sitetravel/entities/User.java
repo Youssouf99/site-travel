@@ -21,6 +21,7 @@ public class User {
     private String firstName;
     private String lastName;
     private String email;
-    @OneToMany(mappedBy = "user")
+    private String phone;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Reservation> reservations = new ArrayList<>();
 }

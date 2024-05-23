@@ -1,6 +1,5 @@
 package agency.travel.com.example.sitetravel.entities;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -27,8 +26,13 @@ public abstract class Travel {
     @Column(columnDefinition = "DATE")
     private LocalDate endDate;
     private double price;
-    @ManyToMany(mappedBy = "travels")
+    private String imageUrl;
+    private int numberOfStars;
+    private String destinationCity;
+    private String address;
+    @OneToMany(mappedBy = "travel")
     @JsonIgnore
     private List<Reservation> reservations = new ArrayList<>();
+
 
 }
