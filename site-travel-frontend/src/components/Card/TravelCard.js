@@ -11,7 +11,15 @@ import Reservation from "../Payment/Reservation";
 import Modal from "../Modal/Modal";
 
 const TravelCard = ({ travel, onReservation }) => {
-  const { name, description, startDate, endDate, price, imageUrl } = travel;
+  const {
+    name,
+    description,
+    startDate,
+    endDate,
+    price,
+    imageUrl,
+    numberOfStars,
+  } = travel;
   const [openReservation, setOpenReservation] = useState(false);
 
   const handleOpenReservation = () => {
@@ -53,7 +61,7 @@ const TravelCard = ({ travel, onReservation }) => {
                 clipRule="evenodd"
               />
             </svg>
-            5.0
+            {numberOfStars}.0
           </Typography>
         </div>
         <Typography variant="paragraph" color="gray" className="mb-5">
