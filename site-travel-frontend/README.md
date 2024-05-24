@@ -1,101 +1,135 @@
-# News API Frontend
+# site-travel-frontend
 
-News API Frontend est l'interface utilisateur de l'application qui permet aux utilisateurs de consulter les actualités récupérées par le backend et de les afficher de manière conviviale.
+Le projet **site-travel-frontend** est une application frontend développée en React qui interagit avec l'API RESTful du projet **site-travel**. Cette application permet aux utilisateurs de rechercher des voyages, des réservations d'hôtels, des vols et des activités en fonction de différents critères.
 
 ## Fonctionnalités
 
-- Affichage des dernières actualités récupérées par l'API backend.
-- Possibilité de filtrer les actualités par source.
-- Options de tri pour organiser les actualités par date ou pertinence.
+- Recherche de voyages, d'hôtels, de vols et d'activités par destination, date et autres critères.
+- Options de tri des résultats de recherche.
+- Affichage paginé des résultats.
 - Gestion des erreurs avec des messages d'alerte en cas de problème de chargement des données.
 
-## Configuration
+## Contenu
 
-Avant d'exécuter l'application frontend, assurez-vous d'avoir Node.js et npm installés sur votre machine.
+- [site-travel-frontend](#site-travel-frontend)
+  - [Fonctionnalités](#fonctionnalités)
+  - [Contenu](#contenu)
+  - [Pré-requis](#pré-requis)
+  - [Installation](#installation)
+  - [Configuration](#configuration)
+  - [Utilisation](#utilisation)
+  - [Technologies utilisées](#technologies-utilisées)
+  - [Structure du projet](#structure-du-projet)
+  - [Aperçu de l'Application](#aperçu-de-lapplication)
+  - [Auteur](#auteur)
 
-1. Clonez ce dépôt sur votre machine locale :
+## Pré-requis
 
-   ```bash
-   https://github.com/Youssouf99/news-site
+Avant de commencer, assurez-vous d'avoir les éléments suivants installés sur votre machine :
 
+- **Node.js** : Version 20.x ou supérieure
+- **npm** : Version 10.x ou supérieure
+
+## Installation
+
+Pour installer et démarrer l'application frontend, suivez les étapes ci-dessous :
+
+1. **Clonez le dépôt** :
+
+   ```sh
+   git clone https://github.com/Youssouf99/site-travel.git
+   cd site-travel-frontend
    ```
 
-2. Accédez au répertoire du projet :
+2. **Installez les dépendances** :
 
-   ```bash
-   cd news-api-frontend
-   ```
-
-3. Installez les dépendances du projet :
-
-   ```bash
+   ```sh
    npm install
    ```
 
-## Exécution du projet
+## Configuration
 
-Une fois que vous avez installé les dépendances et configuré l'URL de l'API backend, vous pouvez exécuter l'application frontend.
+1. **Configuration du proxy pour l'API** :
 
-1. Lancez l'application en mode développement :
+   Le fichier `package.json` contient une section pour définir le proxy vers l'API backend du projet **site-travel** :
 
-   ```bash
-   npm start
+   ```json
+   "proxy": "http://localhost:8081"
    ```
 
-2. L'application sera accessible dans votre navigateur à l'adresse : [http://localhost:3000](http://localhost:3000)
+   Assurez-vous que cette URL correspond à l'URL où l'API backend est accessible.
+
+2. **Variables d'environnement** :
+
+   Créez un fichier `.env` à la racine du projet pour définir les variables d'environnement nécessaires, par exemple :
+
+   `REACT_APP_API_BASE_URL=http://localhost:8081`
+
+   Ces variables seront utilisées pour définir l'URL de base de l'API backend dans l'application.
+
+## Utilisation
+
+Pour démarrer l'application en mode développement, utilisez la commande suivante :
+
+```sh
+npm start
+```
+
+L'application sera accessible à l'adresse suivante :
+
+```http://localhost:3000
+
+```
 
 ## Technologies utilisées
 
 - React
-- Axios
-- Material-UI
-- Tailwind CSS
-
-## Aperçu de l'Application
-   ![Page d'Accueil](https://github.com/Youssouf99/news-site/blob/main/news-site-frontend/src/assets/images/img1.png)
-
-   ![Page d'Accueil](https://github.com/Youssouf99/news-site/blob/main/news-site-frontend/src/assets/images/img2.png)
-
-   ![Page d'Accueil](https://github.com/Youssouf99/news-site/blob/main/news-site-frontend/src/assets/images/img3.png)
-
-   ![Page d'Accueil](https://github.com/Youssouf99/news-site/blob/main/news-site-frontend/src/assets/images/img4.png)
-
-   ![Page d'Accueil](https://github.com/Youssouf99/news-site/blob/main/news-site-frontend/src/assets/images/img5.png)
-
-   ![Page d'Accueil](https://github.com/Youssouf99/news-site/blob/main/news-site-frontend/src/assets/images/img6.png)
-
-   ![Page d'Accueil](https://github.com/Youssouf99/news-site/blob/main/news-site-frontend/src/assets/images/img7.png)
-
-   ![Page d'Accueil](https://github.com/Youssouf99/news-site/blob/main/news-site-frontend/src/assets/images/img8.png)
-
-
-
-
-
-
-
+- Axios pour les requêtes HTTP
+- Material-UI pour les composants d'interface utilisateur
+- Tailwind CSS pour le styling
 
 ## Structure du projet
 
-Le projet est organisé de la manière suivante :
+Le code source de l'application est organisé comme suit :
 
+```site-travel-frontend/
+  ├── public/              # Fichiers publics
+  ├── src/                 # Code source de l'application
+  │   ├── components/      # Composants réutilisables
+  │   ├── assets/          # Assets statiques (images, données)
+  │   ├── pages/           # Composants de page
+  │   ├── services/        # Services pour les appels API
+  │   ├── styles/          # Fichiers de style
+  │   └── App.js           # Composant racine de l'application
+  ├── .env                 # Configuration des variables d'environnement
+  ├── package.json         # Dépendances du projet
+  └── README.md            # Documentation du projet
 ```
-news-api-frontend/
-  ├── public/            # Fichiers publics
-  ├── src/               # Code source de l'application
-  │   ├── components/    # Composants réutilisables
-  │   ├── pages/         # Composants de page
-  │   ├── services/      # Services pour les appels API
-  │   ├── styles/        # Fichiers de style
-  │   └── App.js         # Composant racine de l'application
-  ├── .env               # Configuration des variables d'environnement
-  ├── package.json       # Dépendances du projet
-  └── README.md          # Documentation du projet
-```
+
+## Aperçu de l'Application
+
+![Page d'Accueil](../assets/img1.png)
+
+![Page d'Accueil](../assets/img2.png)
+
+![Page d'Accueil](../assets/img3.png)
+
+![Page d'Accueil](../assets/img4.png)
+
+![Page d'Accueil](../assets/img5.png)
+
+![Page d'Accueil](../assets/img6.png)
+
+![Page d'Accueil](../assets/img7.png)
+
+![Page d'Accueil](../assets/img15.png)
+
+![Page d'Accueil](../assets/img16.png)
+
+![Regardez la vidéo](../assets/demo.mov)
 
 ## Auteur
 
 [Youssouf]
 
-
-
+---

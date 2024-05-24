@@ -41,6 +41,11 @@ const SearchBar = ({ travelType }) => {
     fetchCities();
   }, []);
 
+  const convertFRDateToISO = (frDate) => {
+    const [day, month, year] = frDate.split("/");
+    return `${year}-${month}-${day}`;
+  };
+
   const handleSearch = useCallback(async () => {
     setIsLoading(true);
     try {
@@ -49,9 +54,15 @@ const SearchBar = ({ travelType }) => {
 
       if (destination) params.push(`destination=${destination}`);
       if (startDate)
-        params.push(`startDate=${startDate.toISOString().split("T")[0]}`);
+        params.push(
+          `startDate=${convertFRDateToISO(
+            startDate.toLocaleDateString("fr-FR")
+          )}`
+        );
       if (endDate)
-        params.push(`endDate=${endDate.toISOString().split("T")[0]}`);
+        params.push(
+          `endDate=${convertFRDateToISO(endDate.toLocaleDateString("fr-FR"))}`
+        );
       if (travelType === "flights" && departure)
         params.push(`departureCity=${departure}`);
 

@@ -6,7 +6,7 @@ import { Tab, Tabs, TabsHeader } from "@material-tailwind/react";
 
 const Header = () => {
   const defaultPathName =
-    window.location.pathname === "/" ? "/tesla-news" : window.location.pathname;
+    window.location.pathname === "/" ? "" : window.location.pathname;
   return (
     <header className="h-20 gradient-background bg-gray-800 from-indigo-500 to-blue-600 text-white py-4 px-4 flex justify-between items-center">
       <div className="text-lg font-bold">
